@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Major Day Countdowns</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .countdown-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .countdown-item {
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      flex-basis: 45%; /* Adjust the width here */
+    }
+
+    .countdown-item h3 {
+      margin-top: 0;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 300;
+    }
+
+    .countdown-item p {
+      margin: 5px 0;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 100;
+    }
+  </style>
+  
+  <script>
+    function countdown() {
+      const today = new Date();
+      const christmas = getNextOccurrence(new Date(today.getFullYear(), 11, 25));
+      const newYear = getNextOccurrence(new Date(today.getFullYear() + 1, 0, 1));
+      const boxingDay = getNextOccurrence(new Date(today.getFullYear(), 11, 26));
+      const valentinesDay = getNextOccurrence(new Date(today.getFullYear(), 1, 14));
+      const aprilFools = getNextOccurrence(new Date(today.getFullYear(), 3, 1));
+      const halloween = getNextOccurrence(new Date(today.getFullYear(), 9, 31));
+
+      const days = [
+        { name: 'Valentine\'s Day', date: valentinesDay },
+        { name: 'April Fools\'', date: aprilFools },
+        { name: 'Halloween', date: halloween },
+        { name: 'Christmas', date: christmas },
+        { name: 'Boxing Day', date: boxingDay },
+        { name: 'New Year\'s', date: newYear }
+      ];
+
+      days.sort((a, b) => a.date - b.date);
+
+      let countdownHTML = '';
+
+      for (const day of days) {
+        const totalSeconds = Math.floor((day.date - today) / 1000);
+        const seconds = totalSeconds % 60;
+        const totalMinutes = Math.floor(totalSeconds / 60);
+        const minutes = totalMinutes % 60;
+        const totalHours = Math.floor(totalMinutes / 60);
+        const hours = totalHours % 24;
+        const totalDays = Math.floor(totalHours / 24);
+
+        if (day.name == "Christmas") {
+            countdownHTML += `
+            <div class="countdown-item" style="color: white; background-color: #46416e; background-position: center; background-repeat: no-repeat; background-size: contain; background-image: url('b77a5c72c4bc06386f4a66ff74cbdea2.gif');">
+                <h3>${day.name}</h3>
+                <p>Days: ${totalDays}</p>
+                <p>Hours: ${hours}</p>
+                <p>Minutes: ${minutes}</p>
+                <p>Seconds: ${seconds}</p>
+            </div>
+        `;
+        } else if (day.name == "Boxing Day") {
+            countdownHTML += `
+            <div class="countdown-item" style="color: black; background-color: #ffffff; background-position: center; background-repeat: no-repeat; background-size: contain; background-image: url('fd2c1a96b654e220d09525f006482477.gif');">
+                <h3>${day.name}</h3>
+                <p>Days: ${totalDays}</p>
+                <p>Hours: ${hours}</p>
+                <p>Minutes: ${minutes}</p>
+                <p>Seconds: ${seconds}</p>
+            </div>
+        `;
+        } else if (day.name == "New Year's") {
+            countdownHTML += `
+            <div class="countdown-item" style="color: white; background-color: #16222e; background-position: center; background-repeat: no-repeat; background-size: contain; background-image: url('fireworks.gif');">
+                <h3>${day.name}</h3>
+                <p>Days: ${totalDays}</p>
+                <p>Hours: ${hours}</p>
+                <p>Minutes: ${minutes}</p>
+                <p>Seconds: ${seconds}</p>
+            </div>
+        `;
+        } else if (day.name == "Valentine's Day") {
+            countdownHTML += `
+            <div class="countdown-item" style="color: black; background-color: #f9f0e3; background-position: center; background-repeat: no-repeat; background-size: contain; background-image: url('9dd01791985829.5e40260dbad3e.gif');">
+                <h3>${day.name}</h3>
+                <p>Days: ${totalDays}</p>
+                <p>Hours: ${hours}</p>
+                <p>Minutes: ${minutes}</p>
+                <p>Seconds: ${seconds}</p>
+            </div>
+        `;
+        } else if (day.name == "Halloween") {
+            countdownHTML += `
+            <div class="countdown-item" style="color: white; background-color: #000000; background-position: center; background-repeat: no-repeat; background-size: contain; background-image: url('8d0a1f537c92914d7458c6706da45388.gif');">
+                <h3>${day.name}</h3>
+                <p>Days: ${totalDays}</p>
+                <p>Hours: ${hours}</p>
+                <p>Minutes: ${minutes}</p>
+                <p>Seconds: ${seconds}</p>
+            </div>
+        `;
+        } else if (day.name == "April Fools'") {
+            countdownHTML += `
+            <div class="countdown-item" style="color: white; background-color: #ff829b; background-position: center; background-repeat: no-repeat; background-size: contain; background-image: url('image_processing20201028-31021-1mrzwv0.gif');">
+                <h3>${day.name}</h3>
+                <p>Days: ${totalDays}</p>
+                <p>Hours: ${hours}</p>
+                <p>Minutes: ${minutes}</p>
+                <p>Seconds: ${seconds}</p>
+            </div>
+        `;
+        } else {
+            countdownHTML += `
+            <div class="countdown-item">
+                <h3>${day.name}</h3>
+                <p>Days: ${totalDays}</p>
+                <p>Hours: ${hours}</p>
+                <p>Minutes: ${minutes}</p>
+                <p>Seconds: ${seconds}</p>
+            </div>
+        `;
+        }
+    }
+
+      document.getElementById('countdown').innerHTML = countdownHTML;
+    }
+
+    function getNextOccurrence(date) {
+      const today = new Date();
+      if (date < today) {
+        date.setFullYear(today.getFullYear() + 1);
+      }
+      return date;
+    }
+
+    setInterval(countdown, 1000);
+  </script>
+</head>
+<body>
+  <h1>Major Day Countdowns</h1>
+  <div class="countdown-container" id="countdown"></div>
+</body>
+</html>
